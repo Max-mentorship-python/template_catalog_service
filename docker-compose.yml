@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: order_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  order_service:
+    build:
+      context: ./order_service
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+      - DATABASE_URL=postgresql://user:password@db:5432/order_db
+    volumes:
+      - ./order_service:/app
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
