@@ -11,7 +11,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  order_service:
+  catalog_service:
     build:
       context: .
       dockerfile: Dockerfile

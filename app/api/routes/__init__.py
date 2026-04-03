@@ -2,8 +2,8 @@
 # Добавляйте сюда новые роутеры по мере расширения сервиса.
 from fastapi import APIRouter
 
-from app.api.routes.orders import router as orders_router
+from app.api.routes.products import router as products_router
 
 router = APIRouter()
 
-router.include_router(orders_router, prefix="/orders", tags=["orders"])
+router.include_router(products_router, prefix="/products", tags=["products"])
