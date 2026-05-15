@@ -1,1 +1,3 @@
-# template_order_service
+# Шаблон Catalog Service на FastAPI
+
+Этот репозиторий содержит шаблон для создания Catalog Service.
